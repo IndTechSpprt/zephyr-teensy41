@@ -3,6 +3,9 @@
 	aliases {
 		led0 = &board_led;
 	};
+	chosen {
+      zephyr,console = &cdc_acm_uart0;
+    };
   
 	leds {
 		compatible = "gpio-leds";
@@ -11,4 +14,19 @@
 			label = "User LED Pin 13";
 		};
 	};
+};
+
+&zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+	};
+};
+
+&lpuart6 {
+  status = "disabled";
+};
+
+&lpuart4 {
+  status = "okay";
+  current-speed = < 115200 >;
 };
